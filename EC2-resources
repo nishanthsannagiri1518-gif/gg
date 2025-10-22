@@ -4,17 +4,24 @@
 # date :22 Oct'25
 # this script reports the AWS usage
 ######################
-
+# to get the date and time of every run
+echo "run started at : $(date)
+#for debugging we use set -x
+set -x 
 # AWS S3
 # AWS EC2
 # AWS IAM
 # AWS lambda
 
 #list S3 buckets
+echo "print list of s3 buckets"
 aws s3 ls
 #list EC2-instances
-aws ec2 decribe-instances
+echo "print list of EC2 Instances"
+aws ec2 describe-instances | jq ' .Reservations[].Instances[].InstanceId'
 #list iam users
+echo "print list of IAM users"
 aws iam list-users
 #list lambda funtions
+echo "print list of lambda functions"
 aws lambda list-functions

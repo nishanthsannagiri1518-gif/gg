@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: A simple AWS CloudFormation template to create an EC2 Instance.
+Resources: 
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0305d3d91b9f22e84
+      KeyName: practice
+      SecurityGroups:
+        - default
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: "demo-s3-bucket-cft-20251110-unique"
+      VersioningConfiguration:
+        Status: Enabled
